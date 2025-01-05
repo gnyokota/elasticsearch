@@ -38,4 +38,10 @@ public class ProductService {
         productRepository.deleteById(id);
         return "Product with id " + id + " has been deleted";
     }
+
+    private void validateProduct(ProductEntity product) {
+        if (product.getName() == null || product.getDescription() == null || product.getQuantity() == null || product.getPrice() == null) {
+            throw new IllegalArgumentException("Product fields cannot be null");
+        }
+    }
 }
